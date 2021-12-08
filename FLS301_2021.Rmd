@@ -1,0 +1,908 @@
+---
+title: "FLS301_2021"
+output: pdf_document
+---
+
+# Inferential Stats with R
+Empowerment for Local People Foundation
+Lagos , Dec 8-10
+
+```{r setup, include=FALSE}
+sugar <- 1+2
+
+salt <- 8-2
+
+5+(6-2)*5
+
+```
+
+
+### But first, a quick look at working directories
+```{r setup, include=FALSE}
+getwd()
+
+
+
+setwd("/cloud/project")
+# This is how to set working directory 
+
+
+```
+
+
+
+Copying path directly is the easiest way to do this. Set default working directory: Tools > Global Options. We can make them ourselves
+
+Concecunate which is 'c' allows us to group different things into one object
+
+```{r setup, include=FALSE}
+Gender <- c("Male", "Male", "Male", "Male", "Male", 
+            "Male", "Male", "Male", "Male", "Male", 
+            "FeMale","FeMale", "FeMale","FeMale", "FeMale",
+           "FeMale","FeMale","FeMale","FeMale","FeMale")
+weight <- c(89, 75, 88, 75, 49, 89, 110, 120, 89, 75, 
+            75, 76, 87, 110, 67, 76, 43, 55, 59, 60) 
+income <- c(50000, 95000, 120000, 800000, 650000, 92000, 94000, 222000, 543000,75000,
+            63000, 40000, 99000, 450000, 180000, 190000, 96000, 780000, 150000, 342000)
+rating <- c(5, 1, 2, 4, 9, 9, 8, 1, 9, 7, 
+            5, 6, 6, 1, 1, 1, 3, 6, 9, 4) 
+Marstatus <- c("Married", "Married","Single", "Single","Single",
+             "Single", "Divorced","Single", "Married","Single",
+             "Married", "Single","Single", "Divorced","Single",
+             "Single", "Divorced", "Single","Married", "Divorced")
+CityCentral <- c("Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes",
+                 "No","No","Yes","Yes","No","Yes","No","Yes","No","No")
+
+officew <- as.data.frame(cbind(Gender, weight, income, rating, Marstatus, 
+                               CityCentral))
+
+
+```
+ 
+
+```{r setup, include=FALSE}
+meanincome <- mean(officew$income)
+modeincome <- mode(officew$income)
+modeincome
+
+officew$income <- as.numeric(as.character(officew$income))
+sdincome <- sd(officew$income)
+varincome <- var(officew$income)
+varincome 
+
+class(officew$income)
+```
+
+# TYPES OF DATA
+
+FACTOR
+CHARACTER (CH)/#STRINGS
+NUMERICAL
+
+
+
+# UNDERSTAND R SYNTAX
+
+Vector
+Arguments
+Functions
+Data Frames
+Rows, Columns
+Value
+Method
+Properties
+Matrices 
+List
+Loops
+Packages
+Working Directory
+
+
+First we are taking 2 objects into a column and we telling R to use cbind to take these different columns and see them as one a data frame is an object in R
+ factor is another way of calling categorical variable. The as.data.frame changes the factor (categorical) into a data frame without necessarily changing the class. The 'c' only works if the number of rows in each variable is the same
+
+```{r setup, include=FALSE}
+head(officew, n = 5)
+
+```
+
+### summary stats
+
+ Let us use rbind (rowbind) to bind the rows of two different dataset
+together. The row names of the two datasets must be same for it to work
+
+```{r setup, include=FALSE}
+Gender1 <- c("Male", "Male", "Male", "Male", "Male", 
+            "Male", "Male", "Male", "Male", "Male", "Male")
+weight1 <- c(89, 75, 88, 75, 49, 89, 110, 120, 89, NA, 75)
+
+rating1 <- c(5, 1, 2, 4, 9, 9, 8, 1, 9,NA, 7) 
+
+officew_men22<- as.data.frame(cbind(Gender1, weight1, rating1))
+
+```
+
+
+#We are creating an
+```{r setup, include=FALSE}
+Gender1 <- c("FeMale","FeMale", "FeMale","FeMale", "FeMale",
+            "FeMale","FeMale","FeMale","FeMale", "FeMale", "FeMale")
+weight1 <- c(75, 76, 87, 110, 67, 76, 43, NA, 55, 59, 60) 
+
+rating1 <- c( 4, 6, 4, 1, 1, 4, 3, 6,NA, 9, 4) 
+
+officew_women22<- as.data.frame(cbind(Gender1, weight1, rating1))
+```
+
+We are binding both female and male database with rbind. Since they have the same number of rows, we can bind the,
+```{r setup, include=FALSE}
+
+officew_full <- rbind(officew_men22, officew_women22)# The officew_full data set
+# is the same as the officew data set
+
+```
+# REMOVING NAs
+
+```{r setup, include=FALSE}
+officew_women22_nona <- officew_women22[!is.na(officew_women22$rating1)
+                     &!is.na(officew_women22$weight1), ]
+```
+
+
+#Exporting files
+```{r setup, include=FALSE}
+library(openxlsx)# export to excel
+library(haven)
+
+write.csv(officew, "officew.csv")
+write_sav(officew, "officew.sav")
+```
+
+#Importing files
+```{r setup, include=FALSE}
+officew <- read_csv("officew.csv")
+```
+
+#Importing files from Github
+```{r setup, include=FALSE}
+officew <- read_csv("officew.csv")
+```
+
+
+# Subsetting and Filtering
+You will find two ways you can subset a data using base R.
+Additionally, with the subset and select functions , subset both Gender variable and  select as the required row.
+
+```{r setup, include=FALSE}
+officew_women1 <- officew[officew$Gender == "FeMale",]
+officew_women2 <- subset(officew, Gender == "FeMale")
+officew_women3 <- subset(officew, Gender == "FeMale", select = 
+                           c("weight"))
+
+
+officew_women2 
+officew_women3 
+# male
+officew_men1 <- officew[officew$Gender == "Male",]
+officew_men2 <- subset(officew, Gender == "Male")
+officew_men3 <- subset(officew, Gender == "Male", select = 
+                          c("weight"))
+
+```
+
+We will be using several tools from the tidyr and dplyr packages to achieve data wrangling. 
+Remember we already know some functions from this packages: drop_na, etc...
+```{r setup, include=FALSE}
+summary(officew_men3$weight)
+summary(officew_women3$weight)
+```
+
+
+standard deviation:
+```{r setup, include=FALSE}
+sd(officew$weight, na.rm = T)
+```
+
+For the sample size, we need to omit all missing values. the length(), which() and 
+is.na() functions can help us:
+
+```{r setup, include=FALSE}
+length(which(!is.na(officew$weight)))
+```
+
+Let us select only the 3rd and 5th variable (Income and marital status)
+```{r setup, include=FALSE}
+
+officew_3_5 <- officew[c(3,5)]
+
+```
+
+Let us exclude 3rd and 5th variable (Income and marital status)
+```{r setup, include=FALSE}
+officew_1_2_4 <- officew[c(-3,-5)]
+```
+
+Here is another way of writing what we wrote above (including and not excluding)
+```{r setup, include=FALSE}
+office_1_2_4B <- officew[c(1,2,4)]
+
+```
+
+Include 1st and 2nd variable(column), and 4 and the 4th and 5th observation(row)
+```{r setup, include=FALSE}
+officew_weight_inc_ <- officew[c(1:2),c(4:5)]
+```
+
+#Conditional Subsetting
+
+ In R, `|` mean AND. 
+ In R `&` means AND. 
+ We want to subset those with income of N100,000 and also those who are female. 
+ 
+```{r setup, include=FALSE}
+office_f_hincome <- subset(officew, income >=100000| Gender %in% "FeMale",
+                  select=c(1:5))
+
+```
+
+We want to subset those with income of N100,000 only if (AND) also those who are female.
+
+```{r setup, include=FALSE}
+office_f_hincome1<- subset(officew, income >=100000 & Gender %in% "FeMale",
+                  select=c(1:5))
+
+```
+
+
+#DPLYR
+
+If you have not instaled the packages, you have to install them first by removing the ash symbols!
+```{r setup, include=FALSE}
+# install.packages("tidyr")
+# install.packages("dplyr")
+library(tidyr)
+library(dplyr)
+
+```
+
+We are not getting accurate interval level summary because  R see it as a factor.
+
+```{r setup, include=FALSE}
+class(officew_women3$weight)
+class(officew_men3$weight)
+```
+
+
+# Let us change it to numeric or interval
+
+officew_women3$weight <-
+  as.numeric(as.character(officew_women3$weight))
+
+officew_men3$weight <-
+  as.numeric(as.character(officew_men3$weight))
+
+
+# Let us check us again, great!
+class(officew_women3$weight)
+class(officew_men3$weight)
+
+# We can now compare the means of gender:
+summary(officew_women3$weight)
+summary(officew_men3$weight)
+
+
+############
+# Sampling Inference with t and Z test 
+############
+
+#What is the probabilty that a random male staff will weigh above 125.3
+
+rand_mstaff <- (125.3118 - mean(officew_men3$weight))/sd(officew_men3$weight)
+1-pnorm(rand_mstaff)
+1- pnorm(2)
+
+#What is the probabilty that a random male staff will be 
+# obsess (weigh above 100)
+# It is 2.3 percent
+
+rand_menObestaff <- (100 - mean(officew_men3$weight))/sd(officew_men3$weight)
+1-pnorm(rand_menObestaff)
+
+#What is the probabilty that a random female staff will be 
+# overweighted (weigh above 100 is overweight)
+# It is 0.05 percent (less than 1%)
+
+rand_womenObestaff <- (100 - mean(officew_women3$weight))/
+  sd(officew_women3$weight)
+
+1-pnorm(rand_womenObestaff)
+
+
+
+########################################## 
+# HYPOTHESIS TESTING
+#We know that the probability that the company will hire men with
+# with obseity is 2.3%, and for women is about 1%.  It is clear that
+# the company hires more men with obesity than woman. However, what we
+# do not know if this difference is due to error in our random sampling 
+# or truly reflect the differences in the entire staff.
+# We are going to use HYPOTHESIS TESTING by assuming first, that the 
+# difference between them is zero referred to as NULL
+
+
+#Method 1 and 2: P-value & T-test
+# Do the t-test
+
+t.test(officew_women3$weight, officew_men3$weight)
+
+# Alternative check of the t-statistic:
+# This is similar to what we did earlier with sampling inference
+# HERE, the mean is Zero, and the figure (Weight) we want to get the 
+# probabilty for is the the mean difference. We want to know the 
+# probability of the mean difference. H1 is the mean difference.
+# H0 is the NULL
+
+###################
+#6 steps to understanding the P-value
+#################
+
+#1 We want to test the probability that makes us believe that an effect(-15)
+# or difference between two groups is NOT happening by random chance
+
+#2.We assume the mean effect between these
+# groups is zero meaning  we assume that there is no effect
+
+#3. We run a ttest to get the prob of that effect happening and check the 
+# equivalent Probabiltiy. Note that we still assume our mean difference is zero
+
+#4.We can say that if that probability we get is 5% or less, then that is
+# probability of that effect occuring at an assumption of a mean of zero.
+
+#5. It means the probability of that effect happening if we set our 
+# mean difference to zero is very low. Since the probability that it will occur is
+#is very low, we should not accept that our mean difference is zero.
+
+#6. So we reject that our mean difference is zero, and take the alternative hypothesis.
+
+ 
+
+# Remember that if the T-value is 2 (or 1.96) or more, it means
+# the probability is 2.2% and 5% (two-tail) or less. This means we have 
+# 5% or less probabilty, that we will by chance get the difference 
+# in mean (-15.1 -the effect) with the assumption that the null
+# hypothesis is true  (mean is zero)
+
+# We are assuming that there is no difference, but that assumption
+# will only occur 5% or less if the difference is -15.1. So due to this, 
+# we reject the null hypothesis and accept the alternative
+
+##################
+# Method 1
+####################
+###########
+
+
+
+
+# First: Calculate Standard Errors for both groups
+se.women <- sd(officew_women3$weight) / sqrt(length(officew_women3$weight))
+
+se.men <- sd(officew_men3$weight) / sqrt(length(officew_men3$weight))
+
+# sum (standardized version of) both standard errors:
+se.diff <-   sqrt((se.women^2 + se.men^2))
+se.diff
+# then calculate confidence intervals:
+# t = (H1 - H0) / sem.diff
+mean.diff <- mean(officew_women3$weight) - mean(officew_men3$weight)
+mean.diff
+t <- (mean.diff - mean(0)) / se.diff 
+t # bigger than 1.96?
+
+# calculating t-value at 95% confidence interval and 18 degree of freedom
+qt(0.975, 18)
+# I use a critical t value for 0.05 significance and 18 degrees of freedom
+df <- nrow(officew_women3$weight) + nrow(officew_men3$weight) - 2
+df
+
+# the confidence interval
+(qt(0.975, 18) * se.diff)
+
+upper.ci <- mean.diff + (qt(0.975, 18) * se.diff)
+
+lower.ci <- mean.diff - (qt(0.975, 18) * se.diff)
+
+
+lower.ci
+upper.ci
+##########################################
+# Confidence Interval and Replication by hand
+##########################################
+
+############quiz example
+
+weight_men <- c(89, 75, 88, 75, 49, 89, 110, 120, 89, 75)
+
+weight_women <- c(75, 76, 87, 110, 67, 76, 43, 55, 59, 60)
+
+
+#method 1
+
+t.test(weight_men,weight_women)
+
+
+#method 2 (by hand)
+
+se.quiz.women <- sd(weight_women) / sqrt(length(weight_women ))
+se.quiz.women 
+
+se.quiz.men <- sd(weight_men) / sqrt(length(weight_men ))
+se.quiz.men
+
+
+mean(weight_men )
+sd(weight_men)
+
+mean(weight_women )
+sd(weight_women)
+
+
+se.diff_quiz <-   sqrt((se.quiz.men^2  + se.quiz.women^2 ))
+se.diff_quiz
+
+
+mean.diff55 <- mean(weight_men) - mean(weight_women )
+mean.diff55
+
+upper.ci_quiz <- mean.diff55 + (qt(0.975, 18) * se.diff_quiz)
+upper.ci_quiz 
+
+lower.ci_quiz <- mean.diff55 - (qt(0.975, 18) * se.diff_quiz)
+lower.ci_quiz
+
+
+#tvalue
+tvaluequiz <- (mean.diff55 - mean(0)) / se.diff_quiz #t value
+tvaluequiz
+
+
+?qt
+
+obess_quizm<- (100 - mean(weight_men))/sd(weight_men)
+1-pnorm(obess_quiz)
+
+
+obess_quizf<- (100 - mean(weight_women))/sd(weight_women)
+1-pnorm(obess_quizf)
+
+
+p <- 0.22
+n <- 1200
+se.prop<-sqrt(p*(1-p))/sqrt (n)
+
+upperCI.prop <- p +(qt(0.975, (n-1))*se.prop)
+upperCI.prop 
+
+lowerCI.prop <- p -(qt(0.975, (n-1))*se.prop)
+lowerCI.prop
+
+
+p1 <- 0.22
+n1 <- 200
+se.prop1<-sqrt(p1*(1-p1))/sqrt (n1)
+
+upperCI.prop1 <- p1 +(qt(0.975, (n1-1))*se.prop1)
+upperCI.prop1
+
+lowerCI.prop1 <- p1 -(qt(0.975, (n1-1))*se.prop1)
+lowerCI.prop1
+##quiz example ends
+
+
+
+
+
+
+##################################
+# Interpretation? Can we reject H0?
+##################################
+
+# No, we cannot reject the null hypothesis that the difference in the mean
+# of both gender is zero at 95% confidence. We are 95% confident that the
+# difference in mean of both gender is zero
+
+# We can also say that we cannot reject the null hypothesis that the difference in the mean
+# in mean of both gender will happen by random chance 5 times or more
+# out of every 100 occurence.
+
+#Using the First Method (t-value test), the t-statistic is -1.96, and
+# our t-value is -1.75. If we plot this in a graph, -1.75 falls within regions
+# lower than -1.96 (0.05 p-value), but we were only ready to accept 
+#region at -1.96 and above it
+
+
+
+#Using the second method (p-value test), our p-value as well is higher than 0.05. Our P-value
+#is the probability of getting a result as extreme as our test statistic,
+#assuming our NULL hypothesis is true that there is no difference in the mean.
+
+#Using the third method (CI test), our confidence interval is -33 to 2.with
+# the mean as -15.1. Zero (0)is within the confidence interval that we are
+# are 95 % confident the difference in mean between both gender can also be 0. 
+# We cannot reject the null hypothesis in this regard
+
+########################################################
+# ANOTHER EXAMPLE OF T-TEST WITH NORMAL DISTRIBUTION
+########################################################
+
+
+# make simulations replicable:
+set.seed(101112)
+# disable scientific notation:
+options(scipen=999)
+
+# We start by creating two different normally distributed variables:
+var1 <- rnorm(50, mean = 0, sd = 1)
+var2 <- rnorm(100, mean = 0.5, sd = 3)
+
+# what are their means?
+mean(var1)
+mean(var2)
+
+# is there a significant difference?
+t.test(var1, var2)
+
+
+
+#################################
+# Chi-square
+##############################
+#Chi-Square test in R is a statistical method 
+#which used to determine if two categorical variables have a 
+#significant correlation between them
+
+#The difference with x2 is between the observed frequency (fo) and
+#the expected frequency (fe).
+
+#H0: every i.v. category should have the
+#same distribution across the d.v. as the total,
+#i.e. i.v. doesn't matter.
+
+#Let us assume you that in the process of the review, 
+# an arguement from one of your HR staff is that men
+# are more single than women in the organization.
+
+# We are interested in knowing whether gender affect being single
+# We want to know if whether either you are a male of female
+#has an effect on the marital status
+
+#Here gender is the IV and Martital Status is the DV
+
+# STEP 1- DERIVE A CONTIGENCY TABLE
+#Let us first divide our martital status into two  concrete divisions -
+#Single Vs Not Single
+table(officew$Marstatus)
+table(officew$Marstatus=="Single")
+officew$NewMarStatus<- ifelse(officew$Marstatus=="Single", 
+                        "Single", "Not Single")
+
+# We then use the table function to show the cross tab
+
+#Converting NewMarStatus to a Factor
+officew$NewMarStatus <- as.factor(as.character(officew$NewMarStatus))
+
+table(officew$Gender, officew$NewMarStatus)
+# To get the percentages, we use prop.table function
+
+prop.table(table( officew$NewMarStatus,officew$Gender), 2)
+### 50 percent of female are single,
+###  and 60 percent of males are single.
+### We can say the effect of being a male is 10 percentage point higher
+# for men than women.
+prop.table(table(officew$NewMarStatus, officew$Gender), 1
+)
+
+
+#ALTERNATIVE 2: Install Gmodel package
+install.packages("gmodels")
+library(gmodels)
+
+CrossTable(officew$Gender, officew$NewMarStatus)
+
+# Let us assume we can to CONTROL for location. We think
+# we can also use the location to staff (either they stay in the central city)
+####### across both genders to know wnether they are single or not
+# You just  need to insert the new variable to the TABLE function
+
+?table
+table(officew$Gender, officew$NewMarStatus, officew$CityCentral)
+prop.table (table(officew$Gender, officew$NewMarStatus, officew$CityCentral), 3)
+
+
+#it might be more convenient to create two subsets of the data 
+# one for those who live in Central Area, and one for those
+# who don't
+
+# For people who live in the central area
+officew_central <- officew[officew$CityCentral=="Yes",]
+#For people who DO NOT live in the central area
+officew_Nocentral <- officew[officew$CityCentral=="No",]
+
+
+#With these subsets, you can obtain the cross-tabulations separately and 
+# in percentage form
+
+# For people who live in the central area
+prop.table (table(officew_central$Gender, officew_central$NewMarStatus),2)
+
+# For people who DO NOT live in the central area
+prop.table (table(officew_Nocentral$Gender, officew_Nocentral$NewMarStatus),2)
+  
+
+
+
+#STE 2: CONDUCT a t-test and check the chi square(x2) and p value
+
+chisq.test(officew$Gender,officew$NewMarStatus,correct=FALSE)
+ 
+
+## It gave the warning because many of the expected values will be very small
+## and therefore the approximations of p may not be right.
+ 
+##In R you can use chisq.test(a, simulate.p.value = TRUE) to use 
+##simulate p values.
+
+chisq.test(officew$Gender,officew$NewMarStatus, simulate.p.value = TRUE)
+ 
+## However, with such small cell sizes, all estimates will be poor. 
+ ##It might be good to just test pass vs. fail (deleting "no show") 
+##either with chi-square or logistic regression. Indeed, 
+##since it is pretty clear that the pass/fail grade is a dependent variable,
+##logistic regression might be better
+
+## QUESTION: At what significance level will our chi square statistic of 0.20
+##  at ----- degree of freedom. PLease look at Chisquare table
+## be significant
+
+#################################
+# Correlation
+##############################
+
+
+## packages:
+install.packages("corrplot") # Install the corrplot library, for nice-looking
+# correlation plots. Do this once.
+install.packages("ggplot2") # Install the ggplot2 package, for high-quality
+# graphs
+install.packages("cowplot") # Install the cowplot package, to arrange plots
+# into a grid
+install.packages("ggpubr")
+####
+
+#### Optional packages:
+library(corrplot) # Plotting nice correlation matrix
+library(cowplot) # arranging plots into a grid
+library(ggplot2) # high-quality graphs
+
+####
+
+str(officew)####check the data properties 
+?cor
+cor(officew) #you get an error -> variables should be numeric. 
+
+# Let us change it to numeric or interval
+
+officew$weight <-as.numeric(as.character(officew$weight))
+
+officew$income <- as.numeric(as.character(officew$income))
+
+officew$rating <- as.numeric(as.character(officew$rating))
+
+
+# Let us check us again, great!
+class(officew$weight)
+class(officew$income)
+class(officew$rating)
+
+# plot the graph , use y as income 
+library("ggpubr")
+ggscatter(officew, x = "rating", y = "weight", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Rating in the sample", ylab = "Weight (in Kg)")
+
+cor(officew$weight,officew$rating)
+
+
+
+?cor
+cor(officew) #you get an error -> variables should be numeric. Why??
+corr1<- cor(officew[c(-1,-5,-6,-7)]) #we do it without the 
+#last non-numeric variable "type" which are indexied in 3, 4 and 5
+corr1
+
+
+#nice correlation matrix
+?corrplot
+corrplot(corr1, method = "number") # Try with different methods!
+
+
+
+
+#################################
+# REGRESSION
+############################
+
+# STEP 1, CHECK THE PLOT
+############################
+# How does this look? Let's plot the data!
+plot(officew$weight, officew$income) # First x axis, then y axis:
+# our independent variable is income
+
+
+
+# STEP 2 Run your first (bivariate) regression 
+###################################### 
+myfirstreg <- lm(weight ~ income, data= officew) #First you run it
+summary(myfirstreg) #Then you see the output
+
+
+officew$weight <- as.numeric(as.character(officew$weight))
+
+class(officew$weight)
+
+
+
+# If you would like to take a look at the confidence intervals at
+# confidence level of 99%
+confint(myfirstreg, level=0.99)
+
+#STEP 3 PRINT your Result
+#################################
+install.packages("stargazer") # Install stargazer, for nice-looking regression
+# tables. Do this once
+
+library(stargazer)
+# Lets get a nice table out of it
+stargazer(myfirstreg, title="Regression Results", out="reg.txt")
+
+#STEP 4 Interprete the result
+#################################
+
+options(scipen=999) #run this once to turn off scientific notation in
+#your reg output
+myfirstreg2 <- lm(weight ~ income+rating, data= officew) #First you run it
+summary(myfirstreg2) #Then you see the output
+
+
+
+
+#################################
+# MULTICOLLONEARITY (VIF & TOLERANCE) & Post Treatment Effect
+##############################
+install.packages("carData")
+install.packages("car")
+library(car)
+library(carData)
+
+# VIF and Tolerance
+# Let us test for the multicollinearity of both rating and income
+# on our dependent variable
+# VIF test 
+# The square root of the VIF tells us by which factor at which the
+# standard error for the coefficient of the IV will be larger than if 
+# that if it had 0 correlation with other independent variables.
+
+?vif
+
+vif(myfirstreg2)
+# The Standard Error of the CE of income will be inflated by 1.012 if we
+# include it in the model.
+
+#Tolerance is proportion of the model's independent variables not 
+# explained by other independent variables
+
+# The tolerance is the inverse of the vif and is the Percent of variance 
+# in the predictor that cannot be accounted for by other predictors. 
+
+1/vif(myfirstreg2)
+# For example, if you run the VIF, 98 percent of the variance of income 
+# cannot be explained by other. This is where there is no 
+# correlation. It is what is unique to this variable income, that can't be
+#  explained by any other in the set
+
+
+
+# Post Treatment Bias
+install.packages(AER)
+library(AER)
+?Fatalities
+data("Fatalities")
+
+fatal <- lm(fatal~beertax + youngdrivers + miles + pop, data = Fatalities)
+summary(fatal) # model with a number of covariates to isolate effect of drunk driving
+
+fatal.ptb <- lm(fatal ~ beertax +youngdrivers + miles + pop + spirits,
+                data = Fatalities)
+summary(fatal.ptb) # adding control for the mechanism (spirits consumption)
+
+stargazer(fatal, fatal.ptb, type = "text", data = Fatalities,
+          out = "fatal.reg.txt")
+
+# Here controling for the mechanism causes part of the effect of beertax to
+# be mathematically "soaked up". Admittedly, the effect is a little weak.
+
+
+
+
+#################################
+# Dummy Variable
+##############################
+
+# Convert gender to dummy variable, where male is 1
+#and female is 0. Male is our baseline variable
+
+officew$dMale<- ifelse(officew$Gender=="Male", 1, 0)
+
+
+# Run regression 
+reg11 <- lm(weight ~ dMale,data = officew)
+summary (reg11)
+
+
+#INTEPRETE THE RESULT
+#You interprete the male coefficient to the other
+# result to the Other dummy variable and not the whole model
+# Men on average, will have an addition increase in Kg by 15 units than women
+
+# Run regression 
+reg10 <- lm(income ~ dMale,data = officew)
+summary(reg10)
+
+# Does income have any effect, hardly significant on the model 
+
+
+
+options(scipen=999) #run this once to turn off scientific notation in
+#your reg output
+
+
+# Run regression again
+reg12 <- lm(weight ~ dMale + income,data = officew)
+summary (reg13)
+
+#################################
+# GGPPLOT and INTERACTION EFFECT
+##############################
+
+# graphically using ggplot
+ggplot(officew, aes(x = weight, y = income, colour = rating)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# WHat if we are interested on if the effect of income on weight is different
+# across gender
+
+reg12 <- lm(weight ~ dMale + income,data = officew)
+summary (reg12)
+
+reg15 <- lm(weight ~ dMale + income + dMale*income,data = officew)
+summary (reg15)
+
+
+reg18 <- lm(weight ~ income+ , data = officew)
+summary (reg18)
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

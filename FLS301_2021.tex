@@ -1,0 +1,1105 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{FLS301\_2021}
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={FLS301\_2021},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\hypertarget{inferential-stats-with-r}{%
+\section{Inferential Stats with R}\label{inferential-stats-with-r}}
+
+Empowerment for Local People Foundation Lagos , Dec 8-10
+
+sugar \textless- 1+2
+
+salt \textless- 8-2
+
+5+(6-2)*5 sugar \textless- 1+2
+
+\hypertarget{but-first-a-quick-look-at-working-directories}{%
+\subsubsection{But first, a quick look at working
+directories}\label{but-first-a-quick-look-at-working-directories}}
+
+getwd()
+
+setwd(``C:/Users/User/Dropbox/Bookkeeping'') \# This is how to set
+working directory
+
+setwd(``/Users/antheaalberto/Desktop/Stats I (TA)/Labs/Lab2'')
+
+\hypertarget{copying-path-directly-is-the-easiest-way-to-do-this}{%
+\subsubsection{Copying path directly is the easiest way to do
+this}\label{copying-path-directly-is-the-easiest-way-to-do-this}}
+
+\hypertarget{set-default-working-directory-tools-global-options}{%
+\subsubsection{Set default working directory: Tools \textgreater{}
+Global
+Options}\label{set-default-working-directory-tools-global-options}}
+
+\hypertarget{we-can-make-them-ourselves}{%
+\subsubsection{We can make them
+ourselves}\label{we-can-make-them-ourselves}}
+
+\hypertarget{concecunate-which-is-c-allows-us-to-group-different-things-into-one-object}{%
+\subsubsection{concecunate which is `c' allows us to group different
+things into one
+object}\label{concecunate-which-is-c-allows-us-to-group-different-things-into-one-object}}
+
+Gender \textless- c(``Male'', ``Male'', ``Male'', ``Male'', ``Male'',
+``Male'', ``Male'', ``Male'', ``Male'', ``Male'', ``FeMale'',``FeMale'',
+``FeMale'',``FeMale'', ``FeMale'',
+``FeMale'',``FeMale'',``FeMale'',``FeMale'',``FeMale'') weight
+\textless- c(89, 75, 88, 75, 49, 89, 110, 120, 89, 75, 75, 76, 87, 110,
+67, 76, 43, 55, 59, 60) income \textless- c(50000, 95000, 120000,
+800000, 650000, 92000, 94000, 222000, 543000,75000, 63000, 40000, 99000,
+450000, 180000, 190000, 96000, 780000, 150000, 342000) rating \textless-
+c(5, 1, 2, 4, 9, 9, 8, 1, 9, 7, 5, 6, 6, 1, 1, 1, 3, 6, 9, 4) Marstatus
+\textless- c(``Married'', ``Married'',``Single'', ``Single'',``Single'',
+``Single'', ``Divorced'',``Single'', ``Married'',``Single'',
+``Married'', ``Single'',``Single'', ``Divorced'',``Single'', ``Single'',
+``Divorced'', ``Single'',``Married'', ``Divorced'') CityCentral
+\textless-
+c(``Yes'',``No'',``Yes'',``Yes'',``Yes'',``Yes'',``Yes'',``Yes'',``No'',``Yes'',
+``No'',``No'',``Yes'',``Yes'',``No'',``Yes'',``No'',``Yes'',``No'',``No'')
+
+officew \textless- as.data.frame(cbind(Gender, weight, income, rating,
+Marstatus, CityCentral))
+
+d \textless-
+Day\_5\_Measuring\_Small\_Firm\_Behavior\_Survey\_latest\_version\_labels\_2019\_05\_13\_08\_01\_57
+
+firstreg \textless-
+
+pplwork\textless- d\$\texttt{How\ many\ people\ work\ with\ you?}
+
+meanincome \textless-
+mean(officew\(income) modeincome <- mode(officew\)income) modeincome
+medianincome \textless-
+median(officew\(income) varincome <- var(officew\)income)
+
+officew\(income <- as.numeric(as.character(officew\)income)) sdincome
+\textless- sd(officew\$income)
+
+class(officew\$income)
+
+\hypertarget{section}{%
+\section{}\label{section}}
+
+\hypertarget{types-of-data}{%
+\section{TYPES OF DATA}\label{types-of-data}}
+
+\#FACTOR \#CHARACTER (CH)/\#STRINGS \#NUMERICAL
+
+\hypertarget{section-2}{%
+\section{}\label{section-2}}
+
+\hypertarget{understand-r-syntax}{%
+\section{UNDERSTAND R SYNTAX}\label{understand-r-syntax}}
+
+\#Vector \#Arguments \#Functions \#Data Frames \#Rows, Columns \#Value
+\#Method \#Properties \#Matrices \#List \#Loops \#Packages \#Working
+Directory
+
+\hypertarget{first-we-are-taking-2-objects-into-a-column-and-we-telling-r}{%
+\subsubsection{First we are taking 2 objects into a column and we
+telling
+R}\label{first-we-are-taking-2-objects-into-a-column-and-we-telling-r}}
+
+\hypertarget{to-use-cbind-to-take-these-different-columns-and-see-them-as-one}{%
+\subsubsection{to use cbind to take these different columns and see them
+as
+one}\label{to-use-cbind-to-take-these-different-columns-and-see-them-as-one}}
+
+\hypertarget{a-data-frame-is-an-object-in-r}{%
+\subsubsection{a data frame is an object in
+R}\label{a-data-frame-is-an-object-in-r}}
+
+\hypertarget{factor-is-another-way-of-calling-categorical-variable.-the-as.data.frame}{%
+\subsubsection{factor is another way of calling categorical variable.
+The
+as.data.frame}\label{factor-is-another-way-of-calling-categorical-variable.-the-as.data.frame}}
+
+\hypertarget{changes-the-factor-categorical-into-a-data-frame-without-necessarily}{%
+\subsubsection{changes the factor (categorical) into a data frame
+without
+necessarily}\label{changes-the-factor-categorical-into-a-data-frame-without-necessarily}}
+
+\hypertarget{changing-the-class}{%
+\subsubsection{changing the class}\label{changing-the-class}}
+
+\hypertarget{the-c-only-works-if-the-number-of-rows-in-each-variable-is-the-same}{%
+\subsubsection{the `c' only works if the number of rows in each variable
+is the
+same}\label{the-c-only-works-if-the-number-of-rows-in-each-variable-is-the-same}}
+
+head(officew, n = 5) \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+\#\#\# summary stats\#\#\#
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\hypertarget{let-us-use-rbind-rowbind-to-bind-the-rows-of-two-different-dataset}{%
+\subsubsection{Let us use rbind (rowbind) to bind the rows of two
+different
+dataset}\label{let-us-use-rbind-rowbind-to-bind-the-rows-of-two-different-dataset}}
+
+\hypertarget{together.-the-row-names-of-the-two-datasets-must-be-same-for-it-to-work}{%
+\subsubsection{together. The row names of the two datasets must be same
+for it to
+work}\label{together.-the-row-names-of-the-two-datasets-must-be-same-for-it-to-work}}
+
+Gender1 \textless- c(``Male'', ``Male'', ``Male'', ``Male'', ``Male'',
+``Male'', ``Male'', ``Male'', ``Male'', ``Male'', ``Male'') weight1
+\textless- c(89, 75, 88, 75, 49, 89, 110, 120, 89, NA, 75)
+
+rating1 \textless- c(5, 1, 2, 4, 9, 9, 8, 1, 9,NA, 7, 5, 6, 6, 1, 1, 1,
+3, 6, 9, 4)
+
+officew\_men22\textless- as.data.frame(cbind(Gender1, weight1, rating1))
+\#\#\# We are creating an
+
+Gender1 \textless- c(``FeMale'',``FeMale'', ``FeMale'',``FeMale'',
+``FeMale'', ``FeMale'',``FeMale'',``FeMale'',``FeMale'', ``FeMale'',
+``FeMale'') weight1 \textless- c(75, 76, 87, 110, 67, 76, 43, NA, 55,
+59, 60)
+
+rating1 \textless- c(1, 5, 2, 4, 4, 9, 4, 1, 9, 5, 4, 6, 4, 1, 1, 4, 3,
+6,NA, 9, 4)
+
+officew\_women22\textless- as.data.frame(cbind(Gender1, weight1,
+rating1)) \#\#\# We are creating an
+
+officew\_full \textless- rbind(officew\_men22, officew\_women22)\# The
+officew\_full data set \# is the same as the officew data set
+
+\hypertarget{removing-nas}{%
+\section{REMOVING NAs}\label{removing-nas}}
+
+officew\_women22 \textless-
+officew\_women22{[}!is.na(officew\_women22\(rating1)  &!is.na(officew_women22\)weight1),
+{]}
+
+\hypertarget{method-3}{%
+\section{Method 3}\label{method-3}}
+
+\hypertarget{using-the-subset-and-select-functions-to-select}{%
+\section{Using the subset and select functions to
+select}\label{using-the-subset-and-select-functions-to-select}}
+
+\hypertarget{gender-variable-and-then-select-weight-as-the-required-row}{%
+\section{Gender variable, and then select weight as the required
+row}\label{gender-variable-and-then-select-weight-as-the-required-row}}
+
+officew\_women1
+\textless-(officew\(Gender="FeMale") officew_women2 <- subset(officew, Gender == "FeMale") officew_women3 <- subset(officew, Gender == "FeMale", select =  c("weight")) # male officew_men1 <-(officew\)Gender=``Male'')
+officew\_men2 \textless- subset(officew, Gender == ``Male'')
+officew\_men3 \textless- subset(officew, Gender == ``Male'', select =
+c(``weight'')) \# For that we will be using several tools from the tidyr
+and dplyr packages. \# Remember we already know some functions from this
+packages: drop\_na, etc\ldots{}
+
+summary(officew\_men3\(weight) summary(officew_women3\)weight) \#\#\#
+standard deviation:
+sd(officew\(weight, na.rm = T) ###for the sample size, we need to omit all missing values. the length(), which() and is.na() functions can help us: length(which(!is.na(officew\)weight)))
+
+\hypertarget{include-3rd-and-5th-variable-income-and-marital-status}{%
+\section{include 3rd and 5th variable (Income and marital
+status)}\label{include-3rd-and-5th-variable-income-and-marital-status}}
+
+officew\_3\_5 \textless- officew{[}c(3,5){]}
+
+\hypertarget{exclude-3rd-and-5th-variable-income-and-marital-status}{%
+\section{exclude 3rd and 5th variable (Income and marital
+status)}\label{exclude-3rd-and-5th-variable-income-and-marital-status}}
+
+officew\_1\_2\_4 \textless- officew{[}c(-3,-5){]} office\_1\_2\_4B
+\textless- officew{[}c(1,2,4){]}
+
+\hypertarget{include-1st-and-2nd-variablecolumn-and-4-and-the-4th-and-5th-observationrow}{%
+\section{include 1st and 2nd variable(column), and 4 and the 4th and 5th
+observation(row)}\label{include-1st-and-2nd-variablecolumn-and-4-and-the-4th-and-5th-observationrow}}
+
+officew\_weight\_inc\_ \textless- officew{[}c(1:2),c(4:5){]}
+
+office\_f\_hincome \textless- subset(officew, income
+\textgreater=100000\textbar{} Gender \textless{} ``FeMale'',
+select=c(1:5))
+
+class(officew\$income)
+
+\hypertarget{if-you-have-not-instaled-the-packages-you-have-to-install-them-first}{%
+\section{If you have not instaled the packages, you have to install them
+first!}\label{if-you-have-not-instaled-the-packages-you-have-to-install-them-first}}
+
+\hypertarget{install.packagestidyr}{%
+\section{install.packages(``tidyr'')}\label{install.packagestidyr}}
+
+\hypertarget{install.packagesdplyr}{%
+\section{install.packages(``dplyr'')}\label{install.packagesdplyr}}
+
+library(tidyr) library(dplyr)
+
+\hypertarget{we-are-not-getting-accurate-interval-level-summary-because}{%
+\section{We are not getting accurate interval level summary
+because}\label{we-are-not-getting-accurate-interval-level-summary-because}}
+
+\#R see it as a factor
+class(officew\_women3\(weight) class(officew_men3\)weight)
+
+\hypertarget{let-us-change-it-to-numeric-or-interval}{%
+\section{Let us change it to numeric or
+interval}\label{let-us-change-it-to-numeric-or-interval}}
+
+officew\_women3\(weight <-  as.numeric(as.character(officew_women3\)weight))
+
+officew\_men3\(weight <-  as.numeric(as.character(officew_men3\)weight))
+
+\hypertarget{let-us-check-us-again-great}{%
+\section{Let us check us again,
+great!}\label{let-us-check-us-again-great}}
+
+class(officew\_women3\(weight) class(officew_men3\)weight)
+
+\hypertarget{we-can-now-compare-the-means-of-gender}{%
+\section{We can now compare the means of
+gender:}\label{we-can-now-compare-the-means-of-gender}}
+
+summary(officew\_women3\(weight) summary(officew_men3\)weight)
+
+\hypertarget{sampling-inference-with-t-and-z-test}{%
+\section{Sampling Inference with t and Z
+test}\label{sampling-inference-with-t-and-z-test}}
+
+\#What is the probabilty that a random male staff will weigh above 125.3
+
+rand\_mstaff \textless- (125.3118 -
+mean(officew\_men3\(weight))/sd(officew_men3\)weight)
+1-pnorm(rand\_mstaff) 1- pnorm(2)
+
+\#What is the probabilty that a random male staff will be \# obsess
+(weigh above 100) \# It is 2.3 percent
+
+rand\_menObestaff \textless- (100 -
+mean(officew\_men3\(weight))/sd(officew_men3\)weight)
+1-pnorm(rand\_menObestaff)
+
+\#What is the probabilty that a random female staff will be \#
+overweighted (weigh above 100 is overweight) \# It is 0.05 percent (less
+than 1\%)
+
+rand\_womenObestaff \textless- (100 -
+mean(officew\_women3\(weight))/  sd(officew_women3\)weight)
+
+1-pnorm(rand\_womenObestaff)
+
+\hypertarget{hypothesis-testing}{%
+\section{HYPOTHESIS TESTING}\label{hypothesis-testing}}
+
+\#We know that the probability that the company will hire men with \#
+with obseity is 2.3\%, and for women is about 1\%. It is clear that \#
+the company hires more men with obesity than woman. However, what we \#
+do not know if this difference is due to error in our random sampling \#
+or truly reflect the differences in the entire staff. \# We are going to
+use HYPOTHESIS TESTING by assuming first, that the \# difference between
+them is zero referred to as NULL
+
+\#Method 1 and 2: P-value \& T-test \# Do the t-test
+
+t.test(officew\_women3\(weight, officew_men3\)weight)
+
+\hypertarget{alternative-check-of-the-t-statistic}{%
+\section{Alternative check of the
+t-statistic:}\label{alternative-check-of-the-t-statistic}}
+
+\hypertarget{this-is-similar-to-what-we-did-earlier-with-sampling-inference}{%
+\section{This is similar to what we did earlier with sampling
+inference}\label{this-is-similar-to-what-we-did-earlier-with-sampling-inference}}
+
+\hypertarget{here-the-mean-is-zero-and-the-figure-weight-we-want-to-get-the}{%
+\section{HERE, the mean is Zero, and the figure (Weight) we want to get
+the}\label{here-the-mean-is-zero-and-the-figure-weight-we-want-to-get-the}}
+
+\hypertarget{probabilty-for-is-the-the-mean-difference.-we-want-to-know-the}{%
+\section{probabilty for is the the mean difference. We want to know
+the}\label{probabilty-for-is-the-the-mean-difference.-we-want-to-know-the}}
+
+\hypertarget{probability-of-the-mean-difference.-h1-is-the-mean-difference.}{%
+\section{probability of the mean difference. H1 is the mean
+difference.}\label{probability-of-the-mean-difference.-h1-is-the-mean-difference.}}
+
+\hypertarget{h0-is-the-null}{%
+\section{H0 is the NULL}\label{h0-is-the-null}}
+
+\#6 steps to understanding the P-value
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\#1 We want to test the probability that makes us believe that an
+effect(-15) \# or difference between two groups is NOT happening by
+random chance
+
+\#2.We assume the mean effect between these \# groups is zero meaning we
+assume that there is no effect
+
+\#3. We run a ttest to get the prob of that effect happening and check
+the \# equivalent Probabiltiy. Note that we still assume our mean
+difference is zero
+
+\#4.We can say that if that probability we get is 5\% or less, then that
+is \# probability of that effect occuring at an assumption of a mean of
+zero.
+
+\#5. It means the probability of that effect happening if we set our \#
+mean difference to zero is very low. Since the probability that it will
+occur is \#is very low, we should not accept that our mean difference is
+zero.
+
+\#6. So we reject that our mean difference is zero, and take the
+alternative hypothesis.
+
+\hypertarget{remember-that-if-the-t-value-is-2-or-1.96-or-more-it-means}{%
+\section{Remember that if the T-value is 2 (or 1.96) or more, it
+means}\label{remember-that-if-the-t-value-is-2-or-1.96-or-more-it-means}}
+
+\hypertarget{the-probability-is-2.2-and-5-two-tail-or-less.-this-means-we-have}{%
+\section{the probability is 2.2\% and 5\% (two-tail) or less. This means
+we
+have}\label{the-probability-is-2.2-and-5-two-tail-or-less.-this-means-we-have}}
+
+\hypertarget{or-less-probabilty-that-we-will-by-chance-get-the-difference}{%
+\section{5\% or less probabilty, that we will by chance get the
+difference}\label{or-less-probabilty-that-we-will-by-chance-get-the-difference}}
+
+\hypertarget{in-mean--15.1--the-effect-with-the-assumption-that-the-null}{%
+\section{in mean (-15.1 -the effect) with the assumption that the
+null}\label{in-mean--15.1--the-effect-with-the-assumption-that-the-null}}
+
+\hypertarget{hypothesis-is-true-mean-is-zero}{%
+\section{hypothesis is true (mean is
+zero)}\label{hypothesis-is-true-mean-is-zero}}
+
+\hypertarget{we-are-assuming-that-there-is-no-difference-but-that-assumption}{%
+\section{We are assuming that there is no difference, but that
+assumption}\label{we-are-assuming-that-there-is-no-difference-but-that-assumption}}
+
+\hypertarget{will-only-occur-5-or-less-if-the-difference-is--15.1.-so-due-to-this}{%
+\section{will only occur 5\% or less if the difference is -15.1. So due
+to
+this,}\label{will-only-occur-5-or-less-if-the-difference-is--15.1.-so-due-to-this}}
+
+\hypertarget{we-reject-the-null-hypothesis-and-accept-the-alternative}{%
+\section{we reject the null hypothesis and accept the
+alternative}\label{we-reject-the-null-hypothesis-and-accept-the-alternative}}
+
+\hypertarget{method-1}{%
+\section{Method 1}\label{method-1}}
+
+\hypertarget{first-calculate-standard-errors-for-both-groups}{%
+\section{First: Calculate Standard Errors for both
+groups}\label{first-calculate-standard-errors-for-both-groups}}
+
+se.women \textless-
+sd(officew\_women3\(weight) / sqrt(length(officew_women3\)weight))
+
+se.men \textless-
+sd(officew\_men3\(weight) / sqrt(length(officew_men3\)weight))
+
+\hypertarget{sum-standardized-version-of-both-standard-errors}{%
+\section{sum (standardized version of) both standard
+errors:}\label{sum-standardized-version-of-both-standard-errors}}
+
+se.diff \textless- sqrt((se.women\^{}2 + se.men\^{}2)) se.diff \# then
+calculate confidence intervals: \# t = (H1 - H0) / sem.diff mean.diff
+\textless- mean(officew\_women3\(weight) - mean(officew_men3\)weight)
+mean.diff t \textless- (mean.diff - mean(0)) / se.diff t \# bigger than
+1.96?
+
+\hypertarget{calculating-t-value-at-95-confidence-interval-and-18-degree-of-freedom}{%
+\section{calculating t-value at 95\% confidence interval and 18 degree
+of
+freedom}\label{calculating-t-value-at-95-confidence-interval-and-18-degree-of-freedom}}
+
+qt(0.975, 18) \# I use a critical t value for 0.05 significance and 18
+degrees of freedom df \textless-
+nrow(officew\_women3\(weight) + nrow(officew_men3\)weight) - 2 df
+
+\hypertarget{the-confidence-interval}{%
+\section{the confidence interval}\label{the-confidence-interval}}
+
+(qt(0.975, 18) * se.diff)
+
+upper.ci \textless- mean.diff + (qt(0.975, 18) * se.diff)
+
+lower.ci \textless- mean.diff - (qt(0.975, 18) * se.diff)
+
+lower.ci upper.ci
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+\# Confidence Interval and Replication by hand
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+\#\#\#\#\#\#\#\#\#\#\#\#quiz example
+
+weight\_men \textless- c(89, 75, 88, 75, 49, 89, 110, 120, 89, 75)
+
+weight\_women \textless- c(75, 76, 87, 110, 67, 76, 43, 55, 59, 60)
+
+\#method 1
+
+t.test(weight\_men,weight\_women)
+
+\#method 2 (by hand)
+
+se.quiz.women \textless- sd(weight\_women) / sqrt(length(weight\_women
+)) se.quiz.women
+
+se.quiz.men \textless- sd(weight\_men) / sqrt(length(weight\_men ))
+se.quiz.men
+
+mean(weight\_men ) sd(weight\_men)
+
+mean(weight\_women ) sd(weight\_women)
+
+se.diff\_quiz \textless- sqrt((se.quiz.men\^{}2 + se.quiz.women\^{}2 ))
+se.diff\_quiz
+
+mean.diff55 \textless- mean(weight\_men) - mean(weight\_women )
+mean.diff55
+
+upper.ci\_quiz \textless- mean.diff55 + (qt(0.975, 18) * se.diff\_quiz)
+upper.ci\_quiz
+
+lower.ci\_quiz \textless- mean.diff55 - (qt(0.975, 18) * se.diff\_quiz)
+lower.ci\_quiz
+
+\#tvalue tvaluequiz \textless- (mean.diff55 - mean(0)) / se.diff\_quiz
+\#t value tvaluequiz
+
+?qt
+
+obess\_quizm\textless- (100 - mean(weight\_men))/sd(weight\_men)
+1-pnorm(obess\_quiz)
+
+obess\_quizf\textless- (100 - mean(weight\_women))/sd(weight\_women)
+1-pnorm(obess\_quizf)
+
+p \textless- 0.22 n \textless- 1200 se.prop\textless-sqrt(p*(1-p))/sqrt
+(n)
+
+upperCI.prop \textless- p +(qt(0.975, (n-1))*se.prop) upperCI.prop
+
+lowerCI.prop \textless- p -(qt(0.975, (n-1))*se.prop) lowerCI.prop
+
+p1 \textless- 0.22 n1 \textless- 200
+se.prop1\textless-sqrt(p1*(1-p1))/sqrt (n1)
+
+upperCI.prop1 \textless- p1 +(qt(0.975, (n1-1))*se.prop1) upperCI.prop1
+
+lowerCI.prop1 \textless- p1 -(qt(0.975, (n1-1))*se.prop1) lowerCI.prop1
+\#\#quiz example ends
+
+\hypertarget{interpretation-can-we-reject-h0}{%
+\section{Interpretation? Can we reject
+H0?}\label{interpretation-can-we-reject-h0}}
+
+\hypertarget{no-we-cannot-reject-the-null-hypothesis-that-the-difference-in-the-mean}{%
+\section{No, we cannot reject the null hypothesis that the difference in
+the
+mean}\label{no-we-cannot-reject-the-null-hypothesis-that-the-difference-in-the-mean}}
+
+\hypertarget{of-both-gender-is-zero-at-95-confidence.-we-are-95-confident-that-the}{%
+\section{of both gender is zero at 95\% confidence. We are 95\%
+confident that
+the}\label{of-both-gender-is-zero-at-95-confidence.-we-are-95-confident-that-the}}
+
+\hypertarget{difference-in-mean-of-both-gender-is-zero}{%
+\section{difference in mean of both gender is
+zero}\label{difference-in-mean-of-both-gender-is-zero}}
+
+\hypertarget{we-can-also-say-that-we-cannot-reject-the-null-hypothesis-that-the-difference-in-the-mean}{%
+\section{We can also say that we cannot reject the null hypothesis that
+the difference in the
+mean}\label{we-can-also-say-that-we-cannot-reject-the-null-hypothesis-that-the-difference-in-the-mean}}
+
+\hypertarget{in-mean-of-both-gender-will-happen-by-random-chance-5-times-or-more}{%
+\section{in mean of both gender will happen by random chance 5 times or
+more}\label{in-mean-of-both-gender-will-happen-by-random-chance-5-times-or-more}}
+
+\hypertarget{out-of-every-100-occurence.}{%
+\section{out of every 100
+occurence.}\label{out-of-every-100-occurence.}}
+
+\#Using the First Method (t-value test), the t-statistic is -1.96, and
+\# our t-value is -1.75. If we plot this in a graph, -1.75 falls within
+regions \# lower than -1.96 (0.05 p-value), but we were only ready to
+accept \#region at -1.96 and above it
+
+\#Using the second method (p-value test), our p-value as well is higher
+than 0.05. Our P-value \#is the probability of getting a result as
+extreme as our test statistic, \#assuming our NULL hypothesis is true
+that there is no difference in the mean.
+
+\#Using the third method (CI test), our confidence interval is -33 to
+2.with \# the mean as -15.1. Zero (0)is within the confidence interval
+that we are \# are 95 \% confident the difference in mean between both
+gender can also be 0. \# We cannot reject the null hypothesis in this
+regard
+
+\hypertarget{another-example-of-t-test-with-normal-distribution}{%
+\section{ANOTHER EXAMPLE OF T-TEST WITH NORMAL
+DISTRIBUTION}\label{another-example-of-t-test-with-normal-distribution}}
+
+\hypertarget{make-simulations-replicable}{%
+\section{make simulations
+replicable:}\label{make-simulations-replicable}}
+
+set.seed(101112) \# disable scientific notation: options(scipen=999)
+
+\hypertarget{we-start-by-creating-two-different-normally-distributed-variables}{%
+\section{We start by creating two different normally distributed
+variables:}\label{we-start-by-creating-two-different-normally-distributed-variables}}
+
+var1 \textless- rnorm(50, mean = 0, sd = 1) var2 \textless- rnorm(100,
+mean = 0.5, sd = 3)
+
+\hypertarget{what-are-their-means}{%
+\section{what are their means?}\label{what-are-their-means}}
+
+mean(var1) mean(var2)
+
+\hypertarget{is-there-a-significant-difference}{%
+\section{is there a significant
+difference?}\label{is-there-a-significant-difference}}
+
+t.test(var1, var2)
+
+\hypertarget{chi-square}{%
+\section{Chi-square}\label{chi-square}}
+
+\#Chi-Square test in R is a statistical method \#which used to determine
+if two categorical variables have a \#significant correlation between
+them
+
+\#The difference with x2 is between the observed frequency (fo) and
+\#the expected frequency (fe).
+
+\#H0: every i.v. category should have the \#same distribution across the
+d.v. as the total, \#i.e.~i.v. doesn't matter.
+
+\#Let us assume you that in the process of the review, \# an arguement
+from one of your HR staff is that men \# are more single than women in
+the organization.
+
+\hypertarget{we-are-interested-in-knowing-whether-gender-affect-being-single}{%
+\section{We are interested in knowing whether gender affect being
+single}\label{we-are-interested-in-knowing-whether-gender-affect-being-single}}
+
+\hypertarget{we-want-to-know-if-whether-either-you-are-a-male-of-female}{%
+\section{We want to know if whether either you are a male of
+female}\label{we-want-to-know-if-whether-either-you-are-a-male-of-female}}
+
+\#has an effect on the marital status
+
+\#Here gender is the IV and Martital Status is the DV
+
+\hypertarget{step-1--derive-a-contigency-table}{%
+\section{STEP 1- DERIVE A CONTIGENCY
+TABLE}\label{step-1--derive-a-contigency-table}}
+
+\#Let us first divide our martital status into two concrete divisions -
+\#Single Vs Not Single
+table(officew\(Marstatus) table(officew\)Marstatus==``Single'')
+officew\(NewMarStatus<- ifelse(officew\)Marstatus==``Single'',
+``Single'', ``Not Single'')
+
+\hypertarget{we-then-use-the-table-function-to-show-the-cross-tab}{%
+\section{We then use the table function to show the cross
+tab}\label{we-then-use-the-table-function-to-show-the-cross-tab}}
+
+\#Converting NewMarStatus to a Factor
+officew\(NewMarStatus <- as.factor(as.character(officew\)NewMarStatus))
+
+table(officew\(Gender, officew\)NewMarStatus) \# To get the percentages,
+we use prop.table function
+
+prop.table(table( officew\(NewMarStatus,officew\)Gender), 2) \#\#\# 50
+percent of female are single, \#\#\# and 60 percent of males are single.
+\#\#\# We can say the effect of being a male is 10 percentage point
+higher \# for men than women.
+prop.table(table(officew\(NewMarStatus, officew\)Gender), 1 )
+
+\#ALTERNATIVE 2: Install Gmodel package install.packages(``gmodels'')
+library(gmodels)
+
+CrossTable(officew\(Gender, officew\)NewMarStatus)
+
+\hypertarget{let-us-assume-we-can-to-control-for-location.-we-think}{%
+\section{Let us assume we can to CONTROL for location. We
+think}\label{let-us-assume-we-can-to-control-for-location.-we-think}}
+
+\hypertarget{we-can-also-use-the-location-to-staff-either-they-stay-in-the-central-city}{%
+\section{we can also use the location to staff (either they stay in the
+central
+city)}\label{we-can-also-use-the-location-to-staff-either-they-stay-in-the-central-city}}
+
+across both genders to know wnether they are single or not
+
+\hypertarget{you-just-need-to-insert-the-new-variable-to-the-table-function}{%
+\section{You just need to insert the new variable to the TABLE
+function}\label{you-just-need-to-insert-the-new-variable-to-the-table-function}}
+
+?table table(officew\(Gender, officew\)NewMarStatus,
+officew\(CityCentral) prop.table (table(officew\)Gender,
+officew\(NewMarStatus, officew\)CityCentral), 3)
+
+\#it might be more convenient to create two subsets of the data \# one
+for those who live in Central Area, and one for those \# who don't
+
+\hypertarget{for-people-who-live-in-the-central-area}{%
+\section{For people who live in the central
+area}\label{for-people-who-live-in-the-central-area}}
+
+officew\_central \textless- officew{[}officew\$CityCentral==``Yes'',{]}
+\#For people who DO NOT live in the central area officew\_Nocentral
+\textless- officew{[}officew\$CityCentral==``No'',{]}
+
+\#With these subsets, you can obtain the cross-tabulations separately
+and \# in percentage form
+
+\hypertarget{for-people-who-live-in-the-central-area-1}{%
+\section{For people who live in the central
+area}\label{for-people-who-live-in-the-central-area-1}}
+
+prop.table
+(table(officew\_central\(Gender, officew_central\)NewMarStatus),2)
+
+\hypertarget{for-people-who-do-not-live-in-the-central-area}{%
+\section{For people who DO NOT live in the central
+area}\label{for-people-who-do-not-live-in-the-central-area}}
+
+prop.table
+(table(officew\_Nocentral\(Gender, officew_Nocentral\)NewMarStatus),2)
+
+\#STE 2: CONDUCT a t-test and check the chi square(x2) and p value
+
+chisq.test(officew\(Gender,officew\)NewMarStatus,correct=FALSE)
+
+\hypertarget{it-gave-the-warning-because-many-of-the-expected-values-will-be-very-small}{%
+\subsection{It gave the warning because many of the expected values will
+be very
+small}\label{it-gave-the-warning-because-many-of-the-expected-values-will-be-very-small}}
+
+\hypertarget{and-therefore-the-approximations-of-p-may-not-be-right.}{%
+\subsection{and therefore the approximations of p may not be
+right.}\label{and-therefore-the-approximations-of-p-may-not-be-right.}}
+
+\#\#In R you can use chisq.test(a, simulate.p.value = TRUE) to use
+\#\#simulate p values.
+
+chisq.test(officew\(Gender,officew\)NewMarStatus, simulate.p.value =
+TRUE)
+
+\hypertarget{however-with-such-small-cell-sizes-all-estimates-will-be-poor.}{%
+\subsection{However, with such small cell sizes, all estimates will be
+poor.}\label{however-with-such-small-cell-sizes-all-estimates-will-be-poor.}}
+
+\#\#It might be good to just test pass vs.~fail (deleting ``no show'')
+\#\#either with chi-square or logistic regression. Indeed, \#\#since it
+is pretty clear that the pass/fail grade is a dependent variable,
+\#\#logistic regression might be better
+
+\hypertarget{question-at-what-significance-level-will-our-chi-square-statistic-of-0.20}{%
+\subsection{QUESTION: At what significance level will our chi square
+statistic of
+0.20}\label{question-at-what-significance-level-will-our-chi-square-statistic-of-0.20}}
+
+\hypertarget{at-degree-of-freedom.-please-look-at-chisquare-table}{%
+\subsection{at ----- degree of freedom. PLease look at Chisquare
+table}\label{at-degree-of-freedom.-please-look-at-chisquare-table}}
+
+\hypertarget{be-significant}{%
+\subsection{be significant}\label{be-significant}}
+
+\hypertarget{correlation}{%
+\section{Correlation}\label{correlation}}
+
+\hypertarget{packages}{%
+\subsection{packages:}\label{packages}}
+
+install.packages(``corrplot'') \# Install the corrplot library, for
+nice-looking \# correlation plots. Do this once.
+install.packages(``ggplot2'') \# Install the ggplot2 package, for
+high-quality \# graphs install.packages(``cowplot'') \# Install the
+cowplot package, to arrange plots \# into a grid
+install.packages(``ggpubr'') \#\#\#\#
+
+\hypertarget{optional-packages}{%
+\paragraph{Optional packages:}\label{optional-packages}}
+
+library(corrplot) \# Plotting nice correlation matrix library(cowplot)
+\# arranging plots into a grid library(ggplot2) \# high-quality graphs
+
+\hypertarget{section-19}{%
+\paragraph{}\label{section-19}}
+
+str(officew)\#\#\#\#check the data properties ?cor cor(officew) \#you
+get an error -\textgreater{} variables should be numeric.
+
+\hypertarget{let-us-change-it-to-numeric-or-interval-1}{%
+\section{Let us change it to numeric or
+interval}\label{let-us-change-it-to-numeric-or-interval-1}}
+
+officew\(weight <-as.numeric(as.character(officew\)weight))
+
+officew\(income <- as.numeric(as.character(officew\)income))
+
+officew\(rating <- as.numeric(as.character(officew\)rating))
+
+\hypertarget{let-us-check-us-again-great-1}{%
+\section{Let us check us again,
+great!}\label{let-us-check-us-again-great-1}}
+
+class(officew\(weight) class(officew\)income) class(officew\$rating)
+
+\hypertarget{plot-the-graph-use-y-as-income}{%
+\section{plot the graph , use y as
+income}\label{plot-the-graph-use-y-as-income}}
+
+library(``ggpubr'') ggscatter(officew, x = ``rating'', y = ``weight'',
+add = ``reg.line'', conf.int = TRUE, cor.coef = TRUE, cor.method =
+``pearson'', xlab = ``Rating in the sample'', ylab = ``Weight (in Kg)'')
+
+cor(officew\(weight,officew\)rating)
+
+?cor cor(officew) \#you get an error -\textgreater{} variables should be
+numeric. Why?? corr1\textless- cor(officew{[}c(-1,-5,-6,-7){]}) \#we do
+it without the \#last non-numeric variable ``type'' which are indexied
+in 3, 4 and 5 corr1
+
+\#nice correlation matrix ?corrplot corrplot(corr1, method = ``number'')
+\# Try with different methods!
+
+\hypertarget{regression}{%
+\section{REGRESSION}\label{regression}}
+
+\hypertarget{step-1-check-the-plot}{%
+\section{STEP 1, CHECK THE PLOT}\label{step-1-check-the-plot}}
+
+\hypertarget{how-does-this-look-lets-plot-the-data}{%
+\section{How does this look? Let's plot the
+data!}\label{how-does-this-look-lets-plot-the-data}}
+
+plot(officew\(weight, officew\)income) \# First x axis, then y axis: \#
+our independent variable is income
+
+\hypertarget{step-2-run-your-first-bivariate-regression}{%
+\section{STEP 2 Run your first (bivariate)
+regression}\label{step-2-run-your-first-bivariate-regression}}
+
+myfirstreg \textless- lm(weight \textasciitilde{} income, data= officew)
+\#First you run it summary(myfirstreg) \#Then you see the output
+
+officew\(weight <- as.numeric(as.character(officew\)weight))
+
+class(officew\$weight)
+
+\hypertarget{if-you-would-like-to-take-a-look-at-the-confidence-intervals-at}{%
+\section{If you would like to take a look at the confidence intervals
+at}\label{if-you-would-like-to-take-a-look-at-the-confidence-intervals-at}}
+
+\hypertarget{confidence-level-of-99}{%
+\section{confidence level of 99\%}\label{confidence-level-of-99}}
+
+confint(myfirstreg, level=0.99)
+
+\#STEP 3 PRINT your Result
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+install.packages(``stargazer'') \# Install stargazer, for nice-looking
+regression \# tables. Do this once
+
+library(stargazer) \# Lets get a nice table out of it
+stargazer(myfirstreg, title=``Regression Results'', out=``reg.txt'')
+
+\#STEP 4 Interprete the result
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+options(scipen=999) \#run this once to turn off scientific notation in
+\#your reg output myfirstreg2 \textless- lm(weight \textasciitilde{}
+income+rating, data= officew) \#First you run it summary(myfirstreg2)
+\#Then you see the output
+
+\hypertarget{multicollonearity-vif-tolerance-post-treatment-effect}{%
+\section{MULTICOLLONEARITY (VIF \& TOLERANCE) \& Post Treatment
+Effect}\label{multicollonearity-vif-tolerance-post-treatment-effect}}
+
+install.packages(``carData'') install.packages(``car'') library(car)
+library(carData)
+
+\hypertarget{vif-and-tolerance}{%
+\section{VIF and Tolerance}\label{vif-and-tolerance}}
+
+\hypertarget{let-us-test-for-the-multicollinearity-of-both-rating-and-income}{%
+\section{Let us test for the multicollinearity of both rating and
+income}\label{let-us-test-for-the-multicollinearity-of-both-rating-and-income}}
+
+\hypertarget{on-our-dependent-variable}{%
+\section{on our dependent variable}\label{on-our-dependent-variable}}
+
+\hypertarget{vif-test}{%
+\section{VIF test}\label{vif-test}}
+
+\hypertarget{the-square-root-of-the-vif-tells-us-by-which-factor-at-which-the}{%
+\section{The square root of the VIF tells us by which factor at which
+the}\label{the-square-root-of-the-vif-tells-us-by-which-factor-at-which-the}}
+
+\hypertarget{standard-error-for-the-coefficient-of-the-iv-will-be-larger-than-if}{%
+\section{standard error for the coefficient of the IV will be larger
+than
+if}\label{standard-error-for-the-coefficient-of-the-iv-will-be-larger-than-if}}
+
+\hypertarget{that-if-it-had-0-correlation-with-other-independent-variables.}{%
+\section{that if it had 0 correlation with other independent
+variables.}\label{that-if-it-had-0-correlation-with-other-independent-variables.}}
+
+?vif
+
+vif(myfirstreg2) \# The Standard Error of the CE of income will be
+inflated by 1.012 if we \# include it in the model.
+
+\#Tolerance is proportion of the model's independent variables not \#
+explained by other independent variables
+
+\hypertarget{the-tolerance-is-the-inverse-of-the-vif-and-is-the-percent-of-variance}{%
+\section{The tolerance is the inverse of the vif and is the Percent of
+variance}\label{the-tolerance-is-the-inverse-of-the-vif-and-is-the-percent-of-variance}}
+
+\hypertarget{in-the-predictor-that-cannot-be-accounted-for-by-other-predictors.}{%
+\section{in the predictor that cannot be accounted for by other
+predictors.}\label{in-the-predictor-that-cannot-be-accounted-for-by-other-predictors.}}
+
+1/vif(myfirstreg2) \# For example, if you run the VIF, 98 percent of the
+variance of income \# cannot be explained by other. This is where there
+is no \# correlation. It is what is unique to this variable income, that
+can't be \# explained by any other in the set
+
+\hypertarget{post-treatment-bias}{%
+\section{Post Treatment Bias}\label{post-treatment-bias}}
+
+install.packages(AER) library(AER) ?Fatalities data(``Fatalities'')
+
+fatal \textless- lm(fatal\textasciitilde beertax + youngdrivers + miles
++ pop, data = Fatalities) summary(fatal) \# model with a number of
+covariates to isolate effect of drunk driving
+
+fatal.ptb \textless- lm(fatal \textasciitilde{} beertax +youngdrivers +
+miles + pop + spirits, data = Fatalities) summary(fatal.ptb) \# adding
+control for the mechanism (spirits consumption)
+
+stargazer(fatal, fatal.ptb, type = ``text'', data = Fatalities, out =
+``fatal.reg.txt'')
+
+\hypertarget{here-controling-for-the-mechanism-causes-part-of-the-effect-of-beertax-to}{%
+\section{Here controling for the mechanism causes part of the effect of
+beertax
+to}\label{here-controling-for-the-mechanism-causes-part-of-the-effect-of-beertax-to}}
+
+\hypertarget{be-mathematically-soaked-up.-admittedly-the-effect-is-a-little-weak.}{%
+\section{be mathematically ``soaked up''. Admittedly, the effect is a
+little
+weak.}\label{be-mathematically-soaked-up.-admittedly-the-effect-is-a-little-weak.}}
+
+\hypertarget{dummy-variable}{%
+\section{Dummy Variable}\label{dummy-variable}}
+
+\hypertarget{convert-gender-to-dummy-variable-where-male-is-1}{%
+\section{Convert gender to dummy variable, where male is
+1}\label{convert-gender-to-dummy-variable-where-male-is-1}}
+
+\#and female is 0. Male is our baseline variable
+
+officew\(dMale<- ifelse(officew\)Gender==``Male'', 1, 0)
+
+\hypertarget{run-regression}{%
+\section{Run regression}\label{run-regression}}
+
+reg11 \textless- lm(weight \textasciitilde{} dMale,data = officew)
+summary (reg11)
+
+\#INTEPRETE THE RESULT \#You interprete the male coefficient to the
+other \# result to the Other dummy variable and not the whole model \#
+Men on average, will have an addition increase in Kg by 15 units than
+women
+
+\hypertarget{run-regression-1}{%
+\section{Run regression}\label{run-regression-1}}
+
+reg10 \textless- lm(income \textasciitilde{} dMale,data = officew)
+summary(reg10)
+
+\hypertarget{does-income-have-any-effect-hardly-significant-on-the-model}{%
+\section{Does income have any effect, hardly significant on the
+model}\label{does-income-have-any-effect-hardly-significant-on-the-model}}
+
+options(scipen=999) \#run this once to turn off scientific notation in
+\#your reg output
+
+\hypertarget{run-regression-again}{%
+\section{Run regression again}\label{run-regression-again}}
+
+reg12 \textless- lm(weight \textasciitilde{} dMale + income,data =
+officew) summary (reg13)
+
+\hypertarget{ggpplot-and-interaction-effect}{%
+\section{GGPPLOT and INTERACTION
+EFFECT}\label{ggpplot-and-interaction-effect}}
+
+\hypertarget{graphically-using-ggplot}{%
+\section{graphically using ggplot}\label{graphically-using-ggplot}}
+
+ggplot(officew, aes(x = weight, y = income, colour = rating)) +
+geom\_point() + geom\_smooth(method = ``lm'')
+
+\hypertarget{what-if-we-are-interested-on-if-the-effect-of-income-on-weight-is-different}{%
+\section{WHat if we are interested on if the effect of income on weight
+is
+different}\label{what-if-we-are-interested-on-if-the-effect-of-income-on-weight-is-different}}
+
+\hypertarget{across-gender}{%
+\section{across gender}\label{across-gender}}
+
+reg12 \textless- lm(weight \textasciitilde{} dMale + income,data =
+officew) summary (reg12)
+
+reg15 \textless- lm(weight \textasciitilde{} dMale + income +
+dMale*income,data = officew) summary (reg15)
+
+reg18 \textless- lm(weight \textasciitilde{} income+ , data = officew)
+summary (reg18)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+
+\hypertarget{including-plots}{%
+\subsection{Including Plots}\label{including-plots}}
+
+You can also embed plots, for example:
+
+\includegraphics{FLS301_2021_files/figure-latex/pressure-1.pdf}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\end{document}
