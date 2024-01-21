@@ -1,2 +1,2 @@
-# FLS301
-This is the github page of the FREE LEARNING SERIES (FLS) 301, where you will find the class codes, agenda, tables and some datasets.
+## FLS301 GitHub Repository
+Welcome to the GitHub page for learning R as part of the Free Learning Series (FLS) 301. Here, you'll discover class codes, agendas, tables, and datasets to enhance your learning experience.
